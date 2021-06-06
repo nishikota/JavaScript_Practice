@@ -1,0 +1,297 @@
+* {
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+html {
+  font-size: 15px;
+}
+body {
+  margin: 0;
+}
+.container {
+  width: 100%;
+}
+/* header */
+.headermenu {
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  height: 4rem;
+}
+.headerlogo {
+  width: 7rem;
+  height: 1.8rem;
+}
+#topnav .snslinkwrap {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2rem;
+  margin: 0;
+}
+/* mega menu */
+.childGallery {
+  overflow: hidden;
+  height: 0;
+}
+.childBrand {
+  display: none;
+}
+.megaMenu {
+  overflow: visible;
+  height: auto;
+}
+.megaMenuIcon {
+  transform: rotate(135deg);
+}
+/* animation demo */
+#topnav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+.targetmenu {
+  visibility: visible;
+}
+.target {
+  padding-left: 0;
+
+  background-color: white;
+  margin-top: 45px;
+  margin-bottom: 0;
+  overflow: hidden;
+}
+/*-----------------*/
+#topnav ul li {
+  font-size: 1rem;
+}
+#topnav ul li .pglink::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  display: inline-block;
+  position: relative;
+  margin: 0 0.8rem 0.2rem 0.5rem;
+  transform: rotate(45deg);
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+}
+#topnav ul li .pglink.moveIcon::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  display: inline-block;
+  position: relative;
+  margin: 0 0.8rem 0.2rem 0.5rem;
+  transform: rotate(135deg);
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+}
+#topnav a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 1rem 0;
+  border-bottom: 1px solid grey;
+}
+#topnav ul li .snslink {
+  border-bottom: none;
+  margin: 0 0.7rem;
+  padding: 0.2rem 0;
+}
+
+#topnav a:hover {
+  text-decoration: underline;
+}
+.snslink img {
+  width: 1.4rem;
+}
+#menuicon {
+  display: block;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 4rem;
+  cursor: pointer;
+  z-index: 1;
+}
+#menuicon h1 {
+  text-align: center;
+  margin: 0;
+}
+#menuicon img {
+  margin-top: 1rem;
+}
+#hamburger {
+  display: block;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  width: 1.5rem;
+  height: 16px;
+}
+.menuline {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 1.5rem;
+  height: 2px;
+  background-color: black;
+  transition: 0.5s;
+}
+#line1 {
+  top: 0;
+}
+#line2 {
+  top: 7px;
+}
+#line3 {
+  bottom: 0;
+}
+/* menu REST */
+.line_1 {
+  transform: translateY(7px) rotate(-45deg);
+}
+.line_2 {
+  opacity: 0;
+}
+.line_3 {
+  transform: translateY(-7px) rotate(-135deg);
+  bottom: 0;
+}
+
+/* main */
+.top-img {
+  width: 100%;
+  margin: 0;
+}
+#company-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.message-title {
+  font-size: 1.5rem;
+  padding-bottom: 0.7rem;
+  margin-top: 4.8rem;
+  border-bottom: solid 0.3rem black;
+}
+.message-body {
+  font-size: 0.9rem;
+  width: 60%;
+  padding-bottom: 5rem;
+  margin-top: 2rem;
+  letter-spacing: 0.1em;
+  line-height: 1.9em;
+}
+#photoarea {
+  display: flex;
+  flex-flow: row wrap;
+}
+.photo {
+  align-self: center;
+  width: calc(100% / 3);
+}
+.centerphoto {
+  width: 100%;
+}
+#contentswrapper {
+  width: 80%;
+  margin: auto;
+}
+#brandarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 4.5rem;
+}
+.brand-title {
+  font-size: 1.5rem;
+  padding-bottom: 0.7rem;
+  margin-top: 4.8rem;
+  border-bottom: solid 0.3rem black;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+.brand img {
+  width: 45%;
+}
+.brand p {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  line-height: 1.9em;
+}
+#projectarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid 1px black;
+}
+.project-title {
+  font-size: 1.5rem;
+  padding-bottom: 0.7rem;
+  margin: 4.8rem 0 3rem 0;
+  border-bottom: solid 0.3rem black;
+}
+.project {
+  margin-bottom: 4rem;
+}
+.project img {
+  width: 25rem;
+  float: left;
+  margin: 1rem;
+}
+.project p {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  line-height: 1.9em;
+}
+
+/* footer */
+#companyarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+.company-title {
+  font-size: 1.5rem;
+  padding-bottom: 0.7rem;
+  margin: 4.8rem 0 3rem 0;
+  border-bottom: solid 0.3rem black;
+}
+.adress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+}
+.adress p {
+  font-size: 0.8rem;
+  width: 35%;
+  line-height: 1.8rem;
+}
+#googlemap {
+  position: relative;
+  width: 60%;
+  padding-top: 40%;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+#googlemap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+}

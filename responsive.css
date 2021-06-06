@@ -1,0 +1,140 @@
+/* smartphone small & small window */
+@media screen and (max-width: 640px) {
+  .message-body {
+    width: 90%;
+  }
+  .photo {
+    width: 100%;
+  }
+  .project {
+    text-align: center;
+  }
+  .project img {
+    float: none;
+    width: 80%;
+  }
+  .project p {
+    width: 80%;
+    margin: auto;
+  }
+  .adress p {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  #googlemap {
+    width: 98%;
+    padding-top: 65%;
+    height: 0;
+    overflow: hidden;
+  }
+  #googlemap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+/* PC */
+@media screen and (min-width: 800px) {
+  /* header */
+  .headermenu {
+    position: fixed;
+    width: 20%;
+    right: 0;
+    height: 100%;
+  }
+  #hamburger {
+    display: none;
+  }
+  .menulist {
+    display: flex;
+    flex-direction: column;
+  }
+  .headerlogo {
+    width: 5.8rem;
+    height: 1.5rem;
+    top: 6rem;
+  }
+  #topnav .snslinkwrap {
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    margin-right: 3rem;
+  }
+  #topnav {
+    left: 2rem;
+    visibility: visible;
+  }
+  /* underLine */
+  #topnav a {
+    border-bottom: none;
+  }
+  #topnav a.addLine {
+    text-decoration: underline;
+    color: gray;
+  }
+  /* ------ */
+  .target {
+    padding-top: 4rem;
+  }
+  #topnav ul li {
+    font-size: 0.8rem;
+  }
+  #topnav ul li .pglink::before {
+    display: none;
+  }
+  #topnav ul li .snslink {
+    margin: 0.5rem 1rem 0 0;
+  }
+  #menuicon {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    cursor: default;
+  }
+  /* mega menu */
+  #parentGallery:hover .childGallery {
+    overflow: visible;
+    height: auto;
+  }
+  #parentBrand:hover .childBrand {
+    overflow: visible;
+    height: auto;
+  }
+  /* --------- */
+  #menuicon h1 {
+    text-align: left;
+  }
+  main {
+    width: 80%;
+  }
+  #brandarea {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-title {
+    text-align: center;
+  }
+  .brands {
+    display: flex;
+    flex-direction: row;
+  }
+  .brand {
+    flex-direction: column;
+    margin-top: 5rem;
+    width: calc(100% / 4);
+    align-self: flex-start;
+  }
+  .brand img {
+    width: 60%;
+  }
+  .brand p {
+    width: 80%;
+  }
+  /* footer */
+  footer {
+    width: 80%;
+  }
+}
