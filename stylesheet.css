@@ -31,19 +31,11 @@ body {
   margin: 0;
 }
 /* mega menu */
-.childGallery {
-  overflow: hidden;
-  height: 0;
-}
-.childBrand {
+#childGallery {
   display: none;
 }
-.megaMenu {
-  overflow: visible;
-  height: auto;
-}
-.megaMenuIcon {
-  transform: rotate(135deg);
+#childBrand {
+  display: none;
 }
 #topnav {
   position: absolute;
@@ -83,6 +75,7 @@ body {
   color: black;
   padding: 1rem 0;
   border-bottom: 1px solid grey;
+  cursor: pointer;
 }
 #topnav ul li .snslink {
   border-bottom: none;

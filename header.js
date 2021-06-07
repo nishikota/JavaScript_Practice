@@ -1,6 +1,6 @@
 /* --Top Nav-- */
+const topnav = document.getElementById("topnav");
 function openMenu() {
-  const topnav = document.getElementById("topnav");
   const line1 = document.getElementById("line1");
   const line2 = document.getElementById("line2");
   const line3 = document.getElementById("line3");
@@ -17,24 +17,45 @@ function openMenu() {
   }
 }
 const menuicon = document.getElementById("menuicon");
-menuicon.onclick = openMenu;
+function openMenuResize() {
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    menuicon.onclick = openMenu;
+  } else {
+    topnav.style.display = "block";
+  }
+}
+window.addEventListener("resize", openMenuResize);
+// 800以上の時にopenMenuの発動を無効化
 
 /*---------------*/
 /*-- Mega Menu --*/
-megaMenuGallery = () => {
-  const Gallery = document.getElementsByClassName("childGallery");
-  Gallery[0].classList.toggle("megaMenu");
-};
-document.getElementById("parentGallery").addEventListener("click", () => {
-  megaMenuGallery();
-});
-megaMenuBrand = () => {
-  const Brand = document.getElementsByClassName("childBrand");
-  Brand[0].classList.toggle("megaMenu");
-};
-document.getElementById("parentBrand").addEventListener("click", () => {
-  megaMenuBrand();
-});
+function openMegaMenu() {
+  const childGallery = document.getElementById("childGallery");
+  const childBrand = document.getElementById("childBrand");
+  if (childGallery.style.display === "none") {
+    childGallery.style.display = "block";
+    childBrand.style.display = "none";
+  } else {
+    childGallery.style.display = "none";
+  }
+}
+const parentGallery = document.getElementById("parentGallery");
+// megaMenuの発動がギャラリーのみになっている現象の解消
+
+// megaMenuGallery = () => {
+//   const Gallery = document.getElementsByClassName("childGallery");
+//   Gallery[0].classList.toggle("megaMenu");
+// };
+// document.getElementById("parentGallery").addEventListener("click", () => {
+//   megaMenuGallery();
+// });
+// megaMenuBrand = () => {
+//   const Brand = document.getElementsByClassName("childBrand");
+//   Brand[0].classList.toggle("megaMenu");
+// };
+// document.getElementById("parentBrand").addEventListener("click", () => {
+//   megaMenuBrand();
+// });
 
 /* ------------- */
 

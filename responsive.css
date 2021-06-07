@@ -93,16 +93,6 @@
     left: 2rem;
     cursor: default;
   }
-  /* mega menu */
-  #parentGallery:hover .childGallery {
-    overflow: visible;
-    height: auto;
-  }
-  #parentBrand:hover .childBrand {
-    overflow: visible;
-    height: auto;
-  }
-  /* --------- */
   #menuicon h1 {
     text-align: left;
   }
