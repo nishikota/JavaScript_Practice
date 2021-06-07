@@ -1,20 +1,4 @@
 /* --Top Nav-- */
-// move = () => {
-//   const targets = document.getElementsByClassName("target");
-//   Array.prototype.forEach.call(targets, (element) => {
-//     element.classList.toggle("targetmenu");
-//   });
-// };
-// function menuline() {
-//   document.getElementById("line1").classList.toggle("line_1");
-//   document.getElementById("line2").classList.toggle("line_2");
-//   document.getElementById("line3").classList.toggle("line_3");
-// }
-// document.getElementById("menuicon").addEventListener("click", function () {
-//   menuline();
-//   move();
-// });
-
 function openMenu() {
   const topnav = document.getElementById("topnav");
   const line1 = document.getElementById("line1");
