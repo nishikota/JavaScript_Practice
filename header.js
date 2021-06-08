@@ -1,5 +1,19 @@
 /* --Top Nav-- */
+const menuicon = document.getElementById("menuicon");
 const topnav = document.getElementById("topnav");
+function openMenuResize() {
+  if (window.matchMedia("(max-width: 800px)").matches) {
+    menuicon.onclick = openMenu;
+    topnav.style.display = "none";
+  } else {
+    topnav.style.display = "block";
+    menuicon.onclick = sideMenu;
+  }
+}
+menuicon.onclick = openMenu;
+window.addEventListener("resize", openMenuResize);
+
+// WindowSize under 800px
 function openMenu() {
   const line1 = document.getElementById("line1");
   const line2 = document.getElementById("line2");
@@ -16,30 +30,26 @@ function openMenu() {
     line3.style.transform = "translateY(0) rotate(0)";
   }
 }
-const menuicon = document.getElementById("menuicon");
-function openMenuResize() {
-  if (window.matchMedia("(max-width: 800px)").matches) {
-    menuicon.onclick = openMenu;
-  } else {
-    topnav.style.display = "block";
-  }
+// WindowSize over 800px
+function sideMenu() {
+  topnav.style.display = "block";
 }
-window.addEventListener("resize", openMenuResize);
-// 800以上の時にopenMenuの発動を無効化
-
 /*---------------*/
+
 /*-- Mega Menu --*/
-function openMegaMenu() {
+function openMegaMenu(value) {
   const childGallery = document.getElementById("childGallery");
   const childBrand = document.getElementById("childBrand");
-  if (childGallery.style.display === "none") {
+  if (value === "gallery") {
     childGallery.style.display = "block";
     childBrand.style.display = "none";
-  } else {
+  } else if (value === "brand") {
+    childBrand.style.display = "block";
     childGallery.style.display = "none";
   }
 }
 const parentGallery = document.getElementById("parentGallery");
+
 // megaMenuの発動がギャラリーのみになっている現象の解消
 
 // megaMenuGallery = () => {

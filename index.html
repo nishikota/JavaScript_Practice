@@ -16,7 +16,7 @@
       <div class="container">
         <div class="headermenu">
           <div class="menulist">
-            <div id="menuicon" onclick="openMenu()">
+            <div id="menuicon">
               <h1>
                 <img class="headerlogo" src="images/logo.png" alt="logo" />
               </h1>
@@ -30,7 +30,7 @@
               <ul class="target">
                 <li><a class="pglink" href="#">TOP</a></li>
                 <li><a class="pglink" href="#company-message">MESSAGE</a></li>
-                <li id="parentGallery" onclick="openMegaMenu()">
+                <li id="parentGallery" onclick="openMegaMenu(gallery)">
                   <a class="pglink">GALLERY</a>
                   <ul id="childGallery">
                     <li><a href="#topPhoto">Top Photo</a></li>
@@ -38,7 +38,7 @@
                     <li><a href="#bottomPhoto">Bottom Photo</a></li>
                   </ul>
                 </li>
-                <li id="parentBrand" onclick="openMegaMenu()">
+                <li id="parentBrand" onclick="openMegaMenu(brand)">
                   <a class="pglink">BRAND</a>
                   <ul id="childBrand">
                     <li><a href="#brandLogo">Brand</a></li>
