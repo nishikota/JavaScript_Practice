@@ -37,36 +37,26 @@ function sideMenu() {
 /*---------------*/
 
 /*-- Mega Menu --*/
-function openMegaMenu(value) {
+function openMegaMenu(val) {
   const childGallery = document.getElementById("childGallery");
   const childBrand = document.getElementById("childBrand");
-  if (value === "gallery") {
-    childGallery.style.display = "block";
-    childBrand.style.display = "none";
-  } else if (value === "brand") {
-    childBrand.style.display = "block";
-    childGallery.style.display = "none";
+  if (val === "parentGallery") {
+    if (childGallery.style.display === "none") {
+      childGallery.style.display = "block";
+      childBrand.style.display = "none";
+    } else {
+      childGallery.style.display = "none";
+    }
+  } else if (val === "parentBrand") {
+    if (childBrand.style.display === "none") {
+      childBrand.style.display = "block";
+      childGallery.style.display = "none";
+    } else {
+      childBrand.style.display = "none";
+    }
   }
 }
-const parentGallery = document.getElementById("parentGallery");
-
-// megaMenuの発動がギャラリーのみになっている現象の解消
-
-// megaMenuGallery = () => {
-//   const Gallery = document.getElementsByClassName("childGallery");
-//   Gallery[0].classList.toggle("megaMenu");
-// };
-// document.getElementById("parentGallery").addEventListener("click", () => {
-//   megaMenuGallery();
-// });
-// megaMenuBrand = () => {
-//   const Brand = document.getElementsByClassName("childBrand");
-//   Brand[0].classList.toggle("megaMenu");
-// };
-// document.getElementById("parentBrand").addEventListener("click", () => {
-//   megaMenuBrand();
-// });
-
+// megaMenuの:hoverが外れた
 /* ------------- */
 
 /* menu underline */
