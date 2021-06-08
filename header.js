@@ -37,17 +37,17 @@ function sideMenu() {
 /*---------------*/
 
 /*-- Mega Menu --*/
-function openMegaMenu(val) {
+function openMegaMenu(id) {
   const childGallery = document.getElementById("childGallery");
   const childBrand = document.getElementById("childBrand");
-  if (val === "parentGallery") {
+  if (id === "parentGallery") {
     if (childGallery.style.display === "none") {
       childGallery.style.display = "block";
       childBrand.style.display = "none";
     } else {
       childGallery.style.display = "none";
     }
-  } else if (val === "parentBrand") {
+  } else if (id === "parentBrand") {
     if (childBrand.style.display === "none") {
       childBrand.style.display = "block";
       childGallery.style.display = "none";
