@@ -31,27 +31,18 @@ body {
   margin: 0;
 }
 /* mega menu */
-.childGallery {
-  overflow: hidden;
-  height: 0;
-}
-.childBrand {
+#childGallery {
   display: none;
 }
-.megaMenu {
-  overflow: visible;
-  height: auto;
+#childBrand {
+  display: none;
 }
-.megaMenuIcon {
-  transform: rotate(135deg);
-}
-/* animation demo */
 #topnav {
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
-  visibility: hidden;
+  display: none;
 }
 .targetmenu {
   visibility: visible;
@@ -62,7 +53,6 @@ body {
   background-color: white;
   margin-top: 45px;
   margin-bottom: 0;
-  overflow: hidden;
 }
 /*-----------------*/
 #topnav ul li {
@@ -79,23 +69,13 @@ body {
   border-right: 2px solid black;
   border-top: 2px solid black;
 }
-#topnav ul li .pglink.moveIcon::before {
-  content: "";
-  width: 0.5rem;
-  height: 0.5rem;
-  display: inline-block;
-  position: relative;
-  margin: 0 0.8rem 0.2rem 0.5rem;
-  transform: rotate(135deg);
-  border-right: 2px solid black;
-  border-top: 2px solid black;
-}
 #topnav a {
   display: block;
   text-decoration: none;
   color: black;
   padding: 1rem 0;
   border-bottom: 1px solid grey;
+  cursor: pointer;
 }
 #topnav ul li .snslink {
   border-bottom: none;
