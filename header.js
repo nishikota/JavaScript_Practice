@@ -43,7 +43,6 @@ const childBrand = document.getElementById("childBrand");
 const parentGallery = document.getElementById("parentGallery");
 const parentBrand = document.getElementById("parentBrand");
 
-// onclick
 function hoverMenu() {
   parentGallery.addEventListener("mouseenter", () => {
     childGallery.style.display = "block";
@@ -81,7 +80,7 @@ if (parentBrand === true || parentGallery === true) {
 } else if (parentBrand === false || parentGallery === false) {
   hoverMenu();
 }
-// hover onclickと両立できない if click falseでやってみる
+// hover 反応なし
 
 /* ------------- */
 
