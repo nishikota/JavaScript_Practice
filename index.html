@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="stylesheet.css" />
     <link rel="stylesheet" href="responsive.css" />
   </head>
-  <body>
+  <body onresize="resizeWindow()">
     <header>
       <div class="container">
         <div class="headermenu">
@@ -80,7 +80,9 @@
 
     <main>
       <div id="container">
-        <img class="top-img" src="images/mainImg.jpg" />
+        <div class="underLineArea">
+          <img class="top-img" src="images/mainImg.jpg" />
+        </div>
         <div id="company-message" class="underLineArea">
           <div class="message-title">MESSAGE</div>
           <div class="message-body">

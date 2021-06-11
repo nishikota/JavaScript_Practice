@@ -35,11 +35,30 @@ function sideMenu() {
   topnav.style.display = "block";
 }
 /*---------------*/
+// onclick １回目のクリックで発火しない２回目以降は通常通り動作する
 
 /*-- Mega Menu --*/
+const childGallery = document.getElementById("childGallery");
+const childBrand = document.getElementById("childBrand");
+const parentGallery = document.getElementById("parentGallery");
+const parentBrand = document.getElementById("parentBrand");
+
+// onclick
+function hoverMenu() {
+  parentGallery.addEventListener("mouseenter", () => {
+    childGallery.style.display = "block";
+  });
+  parentGallery.addEventListener("mouseleave", () => {
+    childGallery.style.display = "none";
+  });
+  parentBrand.addEventListener("mouseenter", () => {
+    childBrand.style.display = "block";
+  });
+  parentBrand.addEventListener("mouseleave", () => {
+    childBrand.style.display = "none";
+  });
+}
 function openMegaMenu(id) {
-  const childGallery = document.getElementById("childGallery");
-  const childBrand = document.getElementById("childBrand");
   if (id === "parentGallery") {
     if (childGallery.style.display === "none") {
       childGallery.style.display = "block";
@@ -56,32 +75,46 @@ function openMegaMenu(id) {
     }
   }
 }
-// megaMenuの:hoverが外れた
+
+if (parentBrand === true || parentGallery === true) {
+  openMegaMenu();
+} else if (parentBrand === false || parentGallery === false) {
+  hoverMenu();
+}
+// hover onclickと両立できない if click falseでやってみる
+
 /* ------------- */
 
 /* menu underline */
-const contsPosition = document.getElementsByClassName("underLineArea");
+const contsPosition = document.querySelectorAll("div.underLineArea");
 let windowTop = window.scrollY;
-let position = window.innerHeight * 0.8;
-const pglink = document.getElementsByClassName("pglink");
-
-function resizeWindow(event) {
+let position = window.innerHeight;
+const pglink = document.querySelectorAll("a.pglink");
+function addUnderLine() {
+  for (let i = 0; i < contsPosition.length; i++) {
+    windowTop = window.scrollY;
+    position = window.innerHeight * 0.4;
+    let contsTop = contsPosition.item(i).getBoundingClientRect().top;
+    let contsBottom = contsPosition.item(i).getBoundingClientRect().bottom;
+    if (contsBottom < position && contsBottom > 0) {
+      pglink.item(i).style.color = "grey";
+      pglink.item(i).style.textDecoration = "underline";
+    } else if (contsTop < position && contsTop > 0) {
+      pglink.item(i).style.color = "grey";
+      pglink.item(i).style.textDecoration = "underline";
+    } else if (contsTop > 0 || contsBottom < 0) {
+      pglink.item(i).style.color = "black";
+      pglink.item(i).style.textDecoration = "none";
+    }
+  }
+}
+function resizeWindow() {
   if (window.matchMedia("(min-width: 800px)").matches) {
     window.addEventListener("scroll", () => {
-      windowTop = window.scrollY;
-      position = window.innerHeight * 0.8;
-      for (let i = 0; i < contsPosition.length; i++) {
-        let contsTop = contsPosition[i].getBoundingClientRect().top;
-        let contsBottom = contsPosition[i].getBoundingClientRect().bottom;
-        if (contsTop < position && contsTop > 0) {
-          pglink[i + 1].classList.add("addLine");
-        } else if (contsBottom < position && contsBottom > 0) {
-          pglink[i + 1].classList.add("addLine");
-        } else if (contsTop > 0 || contsBottom < 0) {
-          pglink[i + 1].classList.remove("addLine");
-        }
-      }
+      addUnderLine();
     });
   }
 }
-window.addEventListener("resize", resizeWindow);
+// 周辺の変化を外せない → 表示判定域を上部40％にすることで擬似的に再現
+// 判定域を下部にも追加できればより正確に表現ができる？
+// 初回ロード時に表示されない、リサイズしないと発火しない
