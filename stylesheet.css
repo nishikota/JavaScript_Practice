@@ -42,7 +42,7 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  display: none;
+  display: block;
 }
 .targetmenu {
   visibility: visible;

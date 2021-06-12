@@ -1,19 +1,14 @@
+window.onbeforeunload = () => {
+  window.scrollTo(0, 0);
+};
 /* --Top Nav-- */
+let windowWidth = window.matchMedia("(max-width:800px)");
 const menuicon = document.getElementById("menuicon");
 const topnav = document.getElementById("topnav");
-function openMenuResize() {
-  if (window.matchMedia("(max-width: 800px)").matches) {
-    menuicon.onclick = openMenu;
-    topnav.style.display = "none";
-  } else {
-    topnav.style.display = "block";
-    menuicon.onclick = sideMenu;
-  }
-}
-menuicon.onclick = openMenu;
-window.addEventListener("resize", openMenuResize);
 
-// WindowSize under 800px
+function sideMenu() {
+  topnav.style.display = "block";
+}
 function openMenu() {
   const line1 = document.getElementById("line1");
   const line2 = document.getElementById("line2");
@@ -30,12 +25,19 @@ function openMenu() {
     line3.style.transform = "translateY(0) rotate(0)";
   }
 }
-// WindowSize over 800px
-function sideMenu() {
-  topnav.style.display = "block";
+function menuMove() {
+  if (windowWidth.matches === true) {
+    topnav.style.display = "none";
+    menuicon.onclick = openMenu;
+  } else {
+    topnav.style.display = "block";
+    menuicon.onclick = sideMenu;
+  }
 }
+menuMove();
+window.addEventListener("resize", menuMove);
+
 /*---------------*/
-// onclick １回目のクリックで発火しない２回目以降は通常通り動作する
 
 /*-- Mega Menu --*/
 const childGallery = document.getElementById("childGallery");
@@ -82,7 +84,6 @@ parentBrand.addEventListener(
   },
   false
 );
-// hover 反応なし
 
 /* ------------- */
 
@@ -92,9 +93,11 @@ const pglink = document.querySelectorAll("a.pglink");
 let windowTop = 0;
 let position = 0;
 function addUnderLine() {
+  windowTop = window.scrollY;
+  position = window.innerHeight * 0.1;
+  console.log(position);
+  console.log(!position);
   for (let i = 0; i < contsPosition.length; i++) {
-    windowTop = window.scrollY;
-    position = window.innerHeight * 0.4;
     let contsTop = contsPosition.item(i).getBoundingClientRect().top;
     let contsBottom = contsPosition.item(i).getBoundingClientRect().bottom;
     if (contsBottom < position && contsBottom > 0) {
@@ -109,6 +112,7 @@ function addUnderLine() {
     }
   }
 }
+
 function resizeWindow() {
   window.addEventListener("scroll", () => {
     if (window.matchMedia("(min-width: 800px)").matches) {
