@@ -57,38 +57,40 @@ function hoverMenu() {
     childBrand.style.display = "none";
   });
 }
-function openMegaMenu(id) {
-  if (id === "parentGallery") {
+
+parentGallery.addEventListener(
+  "click",
+  () => {
     if (childGallery.style.display === "none") {
       childGallery.style.display = "block";
       childBrand.style.display = "none";
     } else {
       childGallery.style.display = "none";
     }
-  } else if (id === "parentBrand") {
+  },
+  false
+);
+parentBrand.addEventListener(
+  "click",
+  () => {
     if (childBrand.style.display === "none") {
       childBrand.style.display = "block";
       childGallery.style.display = "none";
     } else {
       childBrand.style.display = "none";
     }
-  }
-}
-
-if (parentBrand === true || parentGallery === true) {
-  openMegaMenu();
-} else if (parentBrand === false || parentGallery === false) {
-  hoverMenu();
-}
+  },
+  false
+);
 // hover 反応なし
 
 /* ------------- */
 
 /* menu underline */
 const contsPosition = document.querySelectorAll("div.underLineArea");
-let windowTop = window.scrollY;
-let position = window.innerHeight;
 const pglink = document.querySelectorAll("a.pglink");
+let windowTop = 0;
+let position = 0;
 function addUnderLine() {
   for (let i = 0; i < contsPosition.length; i++) {
     windowTop = window.scrollY;
@@ -108,12 +110,18 @@ function addUnderLine() {
   }
 }
 function resizeWindow() {
-  if (window.matchMedia("(min-width: 800px)").matches) {
-    window.addEventListener("scroll", () => {
+  window.addEventListener("scroll", () => {
+    if (window.matchMedia("(min-width: 800px)").matches) {
       addUnderLine();
-    });
-  }
+    } else {
+      for (let i = 0; i < contsPosition.length; i++) {
+        pglink.item(i).style.color = "black";
+        pglink.item(i).style.textDecoration = "none";
+      }
+    }
+  });
 }
+window.addEventListener("resize", resizeWindow());
 // 周辺の変化を外せない → 表示判定域を上部40％にすることで擬似的に再現
 // 判定域を下部にも追加できればより正確に表現ができる？
 // 初回ロード時に表示されない、リサイズしないと発火しない
