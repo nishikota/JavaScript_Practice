@@ -16,12 +16,12 @@ function openMenu() {
   if (topnav.style.display === "none") {
     topnav.style.display = "block";
     line1.style.transform = "translateY(7px) rotate(-45deg)";
-    line2.style.opacity = "0";
+    line2.style.display = "none";
     line3.style.transform = "translateY(-7px) rotate(-135deg)";
   } else {
     topnav.style.display = "none";
     line1.style.transform = "translateY(0) rotate(0)";
-    line2.style.opacity = "1";
+    line2.style.display = "block";
     line3.style.transform = "translateY(0) rotate(0)";
   }
 }
@@ -44,47 +44,68 @@ const childGallery = document.getElementById("childGallery");
 const childBrand = document.getElementById("childBrand");
 const parentGallery = document.getElementById("parentGallery");
 const parentBrand = document.getElementById("parentBrand");
-
-function hoverMenu() {
-  parentGallery.addEventListener("mouseenter", () => {
-    childGallery.style.display = "block";
-  });
-  parentGallery.addEventListener("mouseleave", () => {
-    childGallery.style.display = "none";
-  });
-  parentBrand.addEventListener("mouseenter", () => {
-    childBrand.style.display = "block";
-  });
-  parentBrand.addEventListener("mouseleave", () => {
-    childBrand.style.display = "none";
-  });
+function blockGallery() {
+  childGallery.style.display = "block";
+}
+function noneGallery() {
+  childGallery.style.display = "none";
+}
+function blockBrand() {
+  childBrand.style.display = "block";
+}
+function noneBrand() {
+  childBrand.style.display = "none";
 }
 
-parentGallery.addEventListener(
-  "click",
-  () => {
-    if (childGallery.style.display === "none") {
-      childGallery.style.display = "block";
-      childBrand.style.display = "none";
-    } else {
-      childGallery.style.display = "none";
-    }
-  },
-  false
-);
-parentBrand.addEventListener(
-  "click",
-  () => {
-    if (childBrand.style.display === "none") {
-      childBrand.style.display = "block";
-      childGallery.style.display = "none";
-    } else {
-      childBrand.style.display = "none";
-    }
-  },
-  false
-);
-
+function addHoverEvent() {
+  parentGallery.addEventListener("mouseover", blockGallery);
+  parentGallery.addEventListener("mouseout", noneGallery);
+  parentBrand.addEventListener("mouseover", blockBrand);
+  parentBrand.addEventListener("mouseout", noneBrand);
+}
+function removeHoverEvent() {
+  parentGallery.removeEventListener("mouseover", blockGallery);
+  parentGallery.removeEventListener("mouseout", noneGallery);
+  parentBrand.removeEventListener("mouseover", blockBrand);
+  parentBrand.removeEventListener("mouseout", noneBrand);
+}
+function galleryClick() {
+  if (childGallery.style.display === "none") {
+    blockGallery();
+    noneBrand();
+  } else {
+    noneGallery();
+  }
+}
+function brandClick() {
+  if (childBrand.style.display === "none") {
+    blockBrand();
+    noneGallery();
+  } else {
+    noneBrand();
+  }
+}
+function addClickEvent() {
+  parentGallery.addEventListener("click", galleryClick);
+  parentBrand.addEventListener("click", brandClick);
+}
+function removeClickEvent() {
+  parentGallery.removeEventListener("click", galleryClick);
+  parentBrand.removeEventListener("click", brandClick);
+}
+function judgeWindow() {
+  console.log("judge");
+  if (windowWidth.matches === true) {
+    addClickEvent();
+    removeHoverEvent();
+  } else {
+    addHoverEvent();
+    removeClickEvent();
+  }
+}
+judgeWindow();
+window.addEventListener("resize", judgeWindow);
+// 最初のクリックイベントが発火しない２度目以降の発火
 /* ------------- */
 
 /* menu underline */
@@ -95,8 +116,6 @@ let position = 0;
 function addUnderLine() {
   windowTop = window.scrollY;
   position = window.innerHeight * 0.1;
-  console.log(position);
-  console.log(!position);
   for (let i = 0; i < contsPosition.length; i++) {
     let contsTop = contsPosition.item(i).getBoundingClientRect().top;
     let contsBottom = contsPosition.item(i).getBoundingClientRect().bottom;

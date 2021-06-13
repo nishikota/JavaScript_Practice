@@ -31,6 +31,12 @@ body {
   margin: 0;
 }
 /* mega menu */
+#parentGallery {
+  cursor: pointer;
+}
+#parentBrand {
+  cursor: pointer;
+}
 #childGallery {
   display: none;
 }
@@ -44,12 +50,8 @@ body {
   left: 0;
   display: block;
 }
-.targetmenu {
-  visibility: visible;
-}
 .target {
   padding-left: 0;
-
   background-color: white;
   margin-top: 45px;
   margin-bottom: 0;
@@ -131,18 +133,6 @@ body {
 #line3 {
   bottom: 0;
 }
-/* menu REST */
-.line_1 {
-  transform: translateY(7px) rotate(-45deg);
-}
-.line_2 {
-  opacity: 0;
-}
-.line_3 {
-  transform: translateY(-7px) rotate(-135deg);
-  bottom: 0;
-}
-
 /* main */
 .top-img {
   width: 100%;
