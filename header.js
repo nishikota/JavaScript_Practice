@@ -123,7 +123,7 @@ function addUnderLine() {
     if (contsTop + 200 > judgePositionTop && contsTop < judgePositionBottom) {
       pglink.item(i).style.color = "grey";
       pglink.item(i).style.textDecoration = "underline";
-    } else if (contsTop < 0 || contsTop > position) {
+    } else if (contsTop < 0 || contsTop > judgePositionBottom) {
       pglink.item(i).style.color = "black";
       pglink.item(i).style.textDecoration = "none";
     }
