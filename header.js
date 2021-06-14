@@ -94,7 +94,6 @@ function removeClickEvent() {
   parentBrand.removeEventListener("click", brandClick);
 }
 function judgeWindow() {
-  console.log("judge");
   if (windowWidth.matches === true) {
     addClickEvent();
     removeHoverEvent();
@@ -115,20 +114,26 @@ let windowTop = 0;
 let position = 0;
 function addUnderLine() {
   windowTop = window.scrollY;
-  position = window.innerHeight * 0.1;
+  position = window.innerHeight;
+  judgePositionTop = position * 0.2;
+  judgePositionBottom = position * 0.5;
   for (let i = 0; i < contsPosition.length; i++) {
     let contsTop = contsPosition.item(i).getBoundingClientRect().top;
     let contsBottom = contsPosition.item(i).getBoundingClientRect().bottom;
-    if (contsBottom < position && contsBottom > 0) {
+    if (contsTop + 200 > judgePositionTop && contsTop < judgePositionBottom) {
       pglink.item(i).style.color = "grey";
       pglink.item(i).style.textDecoration = "underline";
-    } else if (contsTop < position && contsTop > 0) {
-      pglink.item(i).style.color = "grey";
-      pglink.item(i).style.textDecoration = "underline";
-    } else if (contsTop > 0 || contsBottom < 0) {
+    } else if (contsTop < 0 || contsTop > position) {
       pglink.item(i).style.color = "black";
       pglink.item(i).style.textDecoration = "none";
     }
+  }
+}
+function removeUnderLine() {
+  for (let i = 0; i < contsPosition.length; i++) {
+    pglink.item(i).style.color = "black";
+    pglink.item(i).style.textDecoration = "none";
+    console.log("remove");
   }
 }
 
@@ -137,14 +142,15 @@ function resizeWindow() {
     if (window.matchMedia("(min-width: 800px)").matches) {
       addUnderLine();
     } else {
-      for (let i = 0; i < contsPosition.length; i++) {
-        pglink.item(i).style.color = "black";
-        pglink.item(i).style.textDecoration = "none";
-      }
+      removeUnderLine();
     }
   });
 }
+
+if (window.matchMedia("(min-width: 800px)").matches) {
+  addUnderLine();
+} else {
+  removeUnderLine();
+}
 window.addEventListener("resize", resizeWindow());
-// 周辺の変化を外せない → 表示判定域を上部40％にすることで擬似的に再現
-// 判定域を下部にも追加できればより正確に表現ができる？
-// 初回ロード時に表示されない、リサイズしないと発火しない
+// contsTopのみの判断に変更 judge内にcontsTopが入ることで発火
