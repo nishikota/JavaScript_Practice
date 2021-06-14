@@ -31,6 +31,12 @@ body {
   margin: 0;
 }
 /* mega menu */
+#parentGallery {
+  cursor: pointer;
+}
+#parentBrand {
+  cursor: pointer;
+}
 #childGallery {
   display: none;
 }
@@ -42,14 +48,10 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  display: none;
-}
-.targetmenu {
-  visibility: visible;
+  display: block;
 }
 .target {
   padding-left: 0;
-
   background-color: white;
   margin-top: 45px;
   margin-bottom: 0;
@@ -131,22 +133,10 @@ body {
 #line3 {
   bottom: 0;
 }
-/* menu REST */
-.line_1 {
-  transform: translateY(7px) rotate(-45deg);
-}
-.line_2 {
-  opacity: 0;
-}
-.line_3 {
-  transform: translateY(-7px) rotate(-135deg);
-  bottom: 0;
-}
-
 /* main */
 .top-img {
   width: 100%;
-  margin: 0;
+  margin: 0 0 4rem 0;
 }
 #company-message {
   display: flex;
@@ -156,7 +146,7 @@ body {
 .message-title {
   font-size: 1.5rem;
   padding-bottom: 0.7rem;
-  margin-top: 4.8rem;
+  margin-top: 0;
   border-bottom: solid 0.3rem black;
 }
 .message-body {
