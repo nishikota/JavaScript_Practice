@@ -35,7 +35,6 @@ function menuMove() {
   }
 }
 menuMove();
-window.addEventListener("resize", menuMove);
 
 /*---------------*/
 
@@ -70,11 +69,15 @@ function removeHoverEvent() {
   parentBrand.removeEventListener("mouseout", noneBrand);
 }
 function galleryClick() {
+  console.log(childGallery.style);
+
   if (childGallery.style.display === "none") {
     blockGallery();
     noneBrand();
+    console.log("none");
   } else {
     noneGallery();
+    console.log("block");
   }
 }
 function brandClick() {
@@ -95,15 +98,18 @@ function removeClickEvent() {
 }
 function judgeWindow() {
   if (windowWidth.matches === true) {
+    childGallery.style.display = "none";
+    childBrand.style.display = "none";
     addClickEvent();
     removeHoverEvent();
   } else {
+    childGallery.style.display = "none";
+    childBrand.style.display = "none";
     addHoverEvent();
     removeClickEvent();
   }
 }
 judgeWindow();
-window.addEventListener("resize", judgeWindow);
 // 最初のクリックイベントが発火しない２度目以降の発火
 /* ------------- */
 
@@ -119,7 +125,6 @@ function addUnderLine() {
   judgePositionBottom = position * 0.5;
   for (let i = 0; i < contsPosition.length; i++) {
     let contsTop = contsPosition.item(i).getBoundingClientRect().top;
-    let contsBottom = contsPosition.item(i).getBoundingClientRect().bottom;
     if (contsTop + 200 > judgePositionTop && contsTop < judgePositionBottom) {
       pglink.item(i).style.color = "grey";
       pglink.item(i).style.textDecoration = "underline";
@@ -133,24 +138,21 @@ function removeUnderLine() {
   for (let i = 0; i < contsPosition.length; i++) {
     pglink.item(i).style.color = "black";
     pglink.item(i).style.textDecoration = "none";
-    console.log("remove");
   }
 }
 
-function resizeWindow() {
+function scrollWindow() {
   window.addEventListener("scroll", () => {
-    if (window.matchMedia("(min-width: 800px)").matches) {
+    if (windowWidth.matches === false) {
       addUnderLine();
     } else {
       removeUnderLine();
     }
   });
 }
-
-if (window.matchMedia("(min-width: 800px)").matches) {
-  addUnderLine();
-} else {
-  removeUnderLine();
+if (windowWidth.matches === false) {
+  pglink.item(0).style.color = "grey";
+  pglink.item(0).style.textDecoration = "underline";
 }
-window.addEventListener("resize", resizeWindow());
+scrollWindow();
 // contsTopのみの判断に変更 judge内にcontsTopが入ることで発火

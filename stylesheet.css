@@ -37,18 +37,12 @@ body {
 #parentBrand {
   cursor: pointer;
 }
-#childGallery {
-  display: none;
-}
-#childBrand {
-  display: none;
-}
+
 #topnav {
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
-  display: block;
 }
 .target {
   padding-left: 0;

@@ -96,12 +96,6 @@
   #menuicon h1 {
     text-align: left;
   }
-  #childGallery:hover {
-    display: block;
-  }
-  #childBrand:hover {
-    display: block;
-  }
   main {
     width: 80%;
   }
